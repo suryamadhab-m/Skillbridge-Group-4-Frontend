@@ -39,10 +39,10 @@ export default function Login() {
     navigate("/");
   };
 
-  const handleForgotPassword = () => {
-    // Navigate to forgot password page or show modal
-    console.log("Forgot password clicked for:", role);
-  };
+ const handleForgotPassword = () => {
+  navigate(`/forgot-password?role=${role}`);
+};
+
 
   if (role === "volunteer") {
     return (

@@ -5,6 +5,7 @@ import Landing from "./pages/Landing";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import CreateProfile from "./pages/CreateProfile";
+import ForgotPassword from "./pages/ForgotPassword";
 
 export default function App() {
   return (
@@ -15,9 +16,10 @@ export default function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/create-profile" element={<CreateProfile />} />
       </Routes>
 
     </div>
   );
-}
+}  
