@@ -1,0 +1,381 @@
+/* components.css - styles used by Navbar (and other small components) */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Navbar */
+.sb-navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #eef2f6;
+}
+
+.sb-navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.sb-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.sb-logo-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: #2563eb; /* blue */
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.sb-logo-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Nav buttons */
+.sb-nav-actions .btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* added for smooth hover */
+}
+
+.btn-outline {
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  background: transparent;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  border: 1px solid #2563eb;
+}
+
+/* Hover animation for Sign Up button */
+.sb-nav-actions .btn-primary:hover {
+  transform: translateY(-3px) scale(1.05); /* moves up + slightly bigger */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* subtle shadow */
+}
+
+/* Green button style (optional) */
+.btn-green {
+  background: #10b981;
+  color: white;
+  border: 1px solid #10b981;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  .sb-navbar-inner {
+    padding: 0 8px;
+  }
+  .sb-nav-actions .btn {
+    padding: 6px 10px;
+    font-size: 13px;
+    margin-left: 6px;
+  }
+}
+
+/* Hero Section */
+.sb-hero {
+  padding: 80px 20px;
+  background: #f9fafb;
+  display: flex;
+  justify-content: center;
+  text-align: center; /* center everything inside */
+}
+
+.sb-hero-inner {
+  display: flex;
+  flex-direction: column; /* stack text and image vertically */
+  align-items: center; /* center horizontally */
+  gap: 30px;
+  max-width: 800px; /* limit width for better readability */
+}
+
+.sb-hero-text {
+  flex: 1;
+}
+
+/* Heading */
+.sb-hero-text h1 {
+  font-size: 48px; /* bigger heading */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.sb-hero-text h1 span {
+  color: #2563eb;
+}
+
+/* Paragraph */
+.sb-hero-text p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  justify-content: center; /* center buttons */
+  gap: 16px;
+}
+
+.hero-buttons .btn {
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+/* Blue button */
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  border: 1px solid #2563eb;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Green button */
+.btn-green {
+  background-color: #10b981;
+  color: white;
+  border: 1px solid #10b981;
+}
+
+.btn-green:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional hover for text */
+.sb-hero-text:hover h1,
+.sb-hero-text:hover p {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sb-hero-inner {
+    max-width: 90%;
+  }
+
+  .sb-hero-text h1 {
+    font-size: 34px;
+  }
+
+  .sb-hero-text p {
+    font-size: 18px;
+  }
+
+  .hero-buttons .btn {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+}
+
+
+/* How It Works section */
+.sb-section-title {
+  text-align: center; /* center the heading */
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #1f2937;
+}
+
+/* Optional: make heading slightly bigger on larger screens */
+@media (min-width: 768px) {
+  .sb-section-title {
+    font-size: 32px;
+  }
+}
+.sb-hiw {
+  padding: 80px 0;
+  background: #f9fafb;
+}
+
+.sb-hiw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.sb-hiw-card {
+  background: #ffffff;
+  padding: 32px 24px;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.sb-hiw-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.sb-hiw-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin: 0 auto 16px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+.sb-hiw-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111827;
+}
+.sb-hiw-card p {
+  font-size: 15px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+}
+
+.cta-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+.cta-section p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cta-buttons button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.cta-volunteer {
+  background-color: #2563eb; /* blue */
+  color: #fff;
+}
+
+.cta-volunteer:hover {
+  background-color: #1e4db7;
+  transform: scale(1.05);
+}
+
+.cta-ngo {
+  background-color: #10b981; /* green */
+  color: #fff;
+}
+
+.cta-ngo:hover {
+  background-color: #0d8f67;
+  transform: scale(1.05);
+}
+/* Footer Section */
+.footer {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.footer h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.social-icons a {
+  background-color: #06b6d4; /* Cyan */
+  color: #fff;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: #0891b2; /* Darker cyan */
+}
+
+.help-link a {
+  color: #2563eb; /* Blue */
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.help-link a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+}
