@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
-import "./dashboard.css";
+import "./Dashboard.css";
 
 export default function VolunteerDashboard() {
   const navigate = useNavigate();
@@ -56,6 +56,25 @@ export default function VolunteerDashboard() {
   ]);
 
   const dropdownRef = useRef(null);
+
+  // Get user's first name
+  const getFirstName = () => {
+    if (!user?.name) return "User";
+    return user.name.split(" ")[0];
+  };
+
+  // Get user's initials for avatar
+  const getUserInitials = () => {
+    if (!user?.name) return "U";
+    const names = user.name.split(" ");
+    if (names.length === 1) return names[0].charAt(0).toUpperCase();
+    return (names[0].charAt(0) + names[1].charAt(0)).toUpperCase();
+  };
+
+  // Get skills count
+  const getSkillsCount = () => {
+    return user?.skills?.length || 0;
+  };
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -182,9 +201,9 @@ export default function VolunteerDashboard() {
               onClick={() => setShowDropdown(!showDropdown)}
             >
               <div className="user-avatar">
-                {user?.name?.charAt(0).toUpperCase() || "J"}
+                {getUserInitials()}
               </div>
-              <span className="user-name">{user?.name || "John Doe"}</span>
+              <span className="user-name">{user?.name || "User"}</span>
               <svg
                 width="16"
                 height="16"
@@ -235,7 +254,7 @@ export default function VolunteerDashboard() {
         <div className="dashboard-container">
           {/* Welcome Section */}
           <div className="dashboard-welcome">
-            <h1>Welcome back, {user?.name?.split(" ")[0] || "John"}!</h1>
+            <h1>Welcome back, {getFirstName()}!</h1>
             <p>Here's what's happening with your volunteering journey</p>
           </div>
 
@@ -308,7 +327,7 @@ export default function VolunteerDashboard() {
               </div>
               <div className="stat-content">
                 <p className="stat-label">Skills</p>
-                <h2 className="stat-value">8</h2>
+                <h2 className="stat-value">{getSkillsCount()}</h2>
               </div>
               <div className="stat-trend">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
