@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
-import { AuthProvider } from "../context/AuthProvider";
 import "./form.css";
 
 export default function Login() {
@@ -24,7 +23,7 @@ export default function Login() {
       ...prev,
       [name]: value,
     }));
-    setError(""); // Clear error when user types
+    setError("");
   };
 
   const handleSubmit = async (e) => {
@@ -38,7 +37,6 @@ export default function Login() {
 
     setLoading(true);
 
-    // Call login function from AuthContext
     const result = await login({
       email: formData.email,
       password: formData.password,
@@ -49,7 +47,6 @@ export default function Login() {
     if (result.success) {
       console.log("Login successful:", result.user);
 
-      // Check if the logged-in user's role matches the selected role
       if (result.user.role !== role) {
         setError(
           `This account is registered as ${result.user.role}. Please use the correct login page.`
@@ -57,16 +54,14 @@ export default function Login() {
         return;
       }
 
-      // Redirect based on role
+      // Redirect based on role - UPDATED
       if (result.user.role === "volunteer") {
-        navigate("/"); // or volunteer dashboard
+        navigate("/volunteer-dashboard");
       } else if (result.user.role === "ngo") {
-        navigate("/"); // or ngo dashboard
+        navigate("/ngo-dashboard"); // You can create this later
       }
     } else {
-      const errorMsg = result.message
-        ? result.message
-        : "Login failed. Please check your credentials.";
+      const errorMsg = result.message || "Login failed. Please check your credentials.";
       setError(errorMsg);
     }
   };

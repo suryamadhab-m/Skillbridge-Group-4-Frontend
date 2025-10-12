@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
+import { Eye, EyeOff } from "lucide-react";
 import { AuthProvider } from "../context/AuthProvider";
 import "./form.css";
 
@@ -27,6 +28,7 @@ export default function Register() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const availableSkills = [
     "Web Development",
@@ -128,10 +130,14 @@ export default function Register() {
     setLoading(false);
 
     if (result.success) {
-      console.log("Registration successful:", result.user);
-      // Redirect to create profile or dashboard
-      navigate("/");
-    } else {
+  console.log("Registration successful:", result.user);
+  if (role === "volunteer") {
+    navigate("/volunteer-dashboard");
+  } else {
+    navigate("/"); // for NGO, stay at home or their own dashboard later
+  }
+}
+ else {
       const errorMsg = result.message
         ? result.message
         : "Registration failed. Please try again.";
@@ -224,16 +230,25 @@ export default function Register() {
                 <label htmlFor="password">
                   Password <span className="required">*</span>
                 </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Create a secure password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                  minLength="6"
-                />
+                <div className="password-input-wrapper">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    name="password"
+                    placeholder="Create a secure password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                    minLength="6"
+                  />
+                  <button
+                    type="button"
+                    className="password-toggle-btn"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
               </div>
 
               <div className="form-group">
@@ -433,16 +448,25 @@ export default function Register() {
                 <label htmlFor="password">
                   Password <span className="required">*</span>
                 </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Create a secure password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                  minLength="6"
-                />
+                <div className="password-input-wrapper">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    name="password"
+                    placeholder="Create a secure password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                    minLength="6"
+                  />
+                  <button
+                    type="button"
+                    className="password-toggle-btn"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
               </div>
 
               <div className="form-group">
