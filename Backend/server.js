@@ -40,6 +40,9 @@ app.get('/', (req, res) => {
 // Import routes
 app.use('/api/auth', require('./routes/auth.js'));
 app.use('/api/users', require('./routes/users.js'));
+app.use('/api/password', require('./routes/password'));
+app.use('/api/opportunities', require('./routes/opportunities'));
+app.use('/api/activities', require('./routes/activities'));
 
 // --- Start Server after DB connection ---
 const PORT = process.env.PORT || 5000;
