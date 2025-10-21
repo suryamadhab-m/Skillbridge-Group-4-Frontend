@@ -84,66 +84,67 @@ export default function Register() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+  // Update the handleSubmit function in Register.jsx to ensure proper data flow
 
-    // Validation
-    if (role === "volunteer" && formData.skills.length === 0) {
-      setError("Please select at least one skill");
-      return;
-    }
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
 
-    if (role === "ngo" && !formData.organizationName) {
-      setError("Organization name is required");
-      return;
-    }
-
-    setLoading(true);
-
-    // Prepare data for API based on backend schema
-    const registrationData = {
-      name:
-        role === "volunteer" ? formData.fullName : formData.contactPersonName,
-      email: formData.email,
-      password: formData.password,
-      role: role,
-      location: formData.location,
-      bio: formData.bio,
-    };
-
-    // Add volunteer-specific fields
-    if (role === "volunteer") {
-      registrationData.skills = formData.skills;
-    }
-
-    // Add NGO-specific fields
-    if (role === "ngo") {
-      registrationData.organizationName = formData.organizationName;
-      registrationData.organizationDescription =
-        formData.organizationDescription;
-      registrationData.websiteUrl = formData.websiteUrl;
-    }
-
-    // Call register function from AuthContext
-    const result = await register(registrationData);
-    setLoading(false);
-
-    if (result.success) {
-  console.log("Registration successful:", result.user);
-  if (role === "volunteer") {
-    navigate("/volunteer-dashboard");
-  } else {
-    navigate("/"); // for NGO, stay at home or their own dashboard later
+  // Validation
+  if (role === "volunteer" && formData.skills.length === 0) {
+    setError("Please select at least one skill");
+    return;
   }
-}
- else {
-      const errorMsg = result.message
-        ? result.message
-        : "Registration failed. Please try again.";
-      setError(errorMsg);
-    }
+
+  if (role === "ngo" && !formData.organizationName) {
+    setError("Organization name is required");
+    return;
+  }
+
+  setLoading(true);
+
+  // Prepare data for API based on backend schema
+  const registrationData = {
+    name:
+      role === "volunteer" ? formData.fullName : formData.contactPersonName,
+    email: formData.email,
+    password: formData.password,
+    role: role,
+    location: formData.location,
+    bio: formData.bio,
   };
+
+  // Add volunteer-specific fields
+  if (role === "volunteer") {
+    registrationData.skills = formData.skills;
+  }
+
+  // Add NGO-specific fields
+  if (role === "ngo") {
+    registrationData.organizationName = formData.organizationName;
+    registrationData.organizationDescription =
+      formData.organizationDescription;
+    registrationData.websiteUrl = formData.websiteUrl;
+  }
+
+  // Call register function from AuthContext
+  const result = await register(registrationData);
+  setLoading(false);
+
+  if (result.success) {
+    console.log("Registration successful:", result.user);
+    if (role === "volunteer") {
+      navigate("/volunteer-dashboard");
+    } else {
+      navigate("/ngo-dashboard");
+    }
+  } else {
+    const errorMsg = result.message
+      ? result.message
+      : "Registration failed. Please try again.";
+    setError(errorMsg);
+  }
+};
 
   const handleBackToHome = () => {
     navigate("/");

@@ -54,11 +54,11 @@ export default function Login() {
         return;
       }
 
-      // Redirect based on role - UPDATED
+      // Redirect based on role
       if (result.user.role === "volunteer") {
         navigate("/volunteer-dashboard");
       } else if (result.user.role === "ngo") {
-        navigate("/ngo-dashboard"); // You can create this later
+        navigate("/ngo-dashboard");
       }
     } else {
       const errorMsg = result.message || "Login failed. Please check your credentials.";

@@ -640,3 +640,156 @@
   background-color: #d1d5db;
   transform: scale(1.03);
 }
+
+/* ===============================
+   Edit Profile Card & Form
+==================================*/
+
+.edit-profile-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.edit-profile-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-profile-form .form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.edit-profile-form .form-group input,
+.edit-profile-form .form-group textarea,
+.edit-profile-form .form-group select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #111827;
+  background: white;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.edit-profile-form .form-group input::placeholder,
+.edit-profile-form .form-group textarea::placeholder {
+  color: #9ca3af;
+}
+
+.edit-profile-form .form-group input:focus,
+.edit-profile-form .form-group textarea:focus,
+.edit-profile-form .form-group select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.edit-profile-form .form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.form-actions .btn {
+  padding: 12px 24px;
+  font-size: 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-actions .btn-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.form-actions .btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+}
+
+.form-actions .btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-actions .btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.form-actions .btn-secondary:hover:not(:disabled) {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+.form-actions .btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive Design for Edit Profile */
+@media (max-width: 768px) {
+  .edit-profile-card {
+    padding: 24px 20px;
+  }
+
+  .edit-profile-form {
+    gap: 20px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-profile-card {
+    padding: 20px 16px;
+  }
+
+  .dashboard-welcome h1 {
+    font-size: 24px;
+  }
+
+  .dashboard-welcome p {
+    font-size: 14px;
+  }
+}
