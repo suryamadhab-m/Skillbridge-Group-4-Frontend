@@ -7,6 +7,41 @@ export default function NGODashboard() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
+  
+  // Get opportunities stats from localStorage
+  const getOpportunitiesStats = () => {
+    const opportunities = JSON.parse(localStorage.getItem('opportunities') || '[]');
+    return {
+      total: opportunities.length,
+      active: opportunities.filter(o => o.isActive).length,
+      applications: opportunities.reduce((sum, o) => sum + (o.applications || 0), 0),
+      pending: 16 // This would come from applications data in real implementation
+    };
+  };
+
+  const [stats, setStats] = useState(getOpportunitiesStats());
+
+  // Update stats when component mounts or when returning from other pages
+  useEffect(() => {
+    const updateStats = () => {
+      setStats(getOpportunitiesStats());
+    };
+    
+    // Update on mount
+    updateStats();
+    
+    // Update when window gains focus (user returns to tab/page)
+    window.addEventListener('focus', updateStats);
+    
+    // Listen for storage changes (when opportunities are added/updated)
+    window.addEventListener('storage', updateStats);
+    
+    return () => {
+      window.removeEventListener('focus', updateStats);
+      window.removeEventListener('storage', updateStats);
+    };
+  }, []);
+
   const [activities, setActivities] = useState([
     {
       id: 1,
@@ -177,10 +212,10 @@ export default function NGODashboard() {
           </div>
 
           <nav className="dashboard-nav">
-            <a href="#dashboard" className="nav-link active">
+            <a href="/ngo-dashboard" className="nav-link active">
               Dashboard
             </a>
-            <a href="#opportunities" className="nav-link">
+            <a href="/ngo-opportunities" className="nav-link">
               My Opportunities
             </a>
             <a href="#applications" className="nav-link">
@@ -254,7 +289,7 @@ export default function NGODashboard() {
             <p>Manage your opportunities and connect with volunteers</p>
           </div>
 
-          {/* Stats Cards */}
+          {/* Stats Cards - Using dynamic stats from localStorage */}
           <div className="stats-grid">
             <div className="stat-card">
               <div className="stat-icon applications">
@@ -265,7 +300,7 @@ export default function NGODashboard() {
               </div>
               <div className="stat-content">
                 <p className="stat-label">Active Opportunities</p>
-                <h2 className="stat-value">6</h2>
+                <h2 className="stat-value">{stats.active}</h2>
               </div>
               <div className="stat-trend">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -286,7 +321,7 @@ export default function NGODashboard() {
               </div>
               <div className="stat-content">
                 <p className="stat-label">Total Applications</p>
-                <h2 className="stat-value">34</h2>
+                <h2 className="stat-value">{stats.applications}</h2>
               </div>
               <div className="stat-trend">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -324,7 +359,7 @@ export default function NGODashboard() {
               </div>
               <div className="stat-content">
                 <p className="stat-label">Pending Applications</p>
-                <h2 className="stat-value">16</h2>
+                <h2 className="stat-value">{stats.pending}</h2>
               </div>
               <div className="stat-trend">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -1,0 +1,312 @@
+/* Create Opportunity Page Styles */
+
+.create-opportunity-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.create-opportunity-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.create-opportunity-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.create-opportunity-form .form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.create-opportunity-form .required {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+.create-opportunity-form input,
+.create-opportunity-form textarea,
+.create-opportunity-form select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #111827;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.create-opportunity-form input::placeholder,
+.create-opportunity-form textarea::placeholder {
+  color: #9ca3af;
+}
+
+.create-opportunity-form input:focus,
+.create-opportunity-form textarea:focus,
+.create-opportunity-form select:focus {
+  background: white;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.create-opportunity-form input.error,
+.create-opportunity-form textarea.error,
+.create-opportunity-form select.error {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.create-opportunity-form input.error:focus,
+.create-opportunity-form textarea.error:focus,
+.create-opportunity-form select.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.create-opportunity-form textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.6;
+}
+
+.create-opportunity-form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+/* Error Messages */
+.error-message {
+  font-size: 13px;
+  color: #ef4444;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.error-message::before {
+  content: "⚠";
+}
+
+/* Skills Selector */
+.skills-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skills-hint {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.skill-chip {
+  padding: 10px 16px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+
+.skill-chip .skill-plus {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.skill-chip:hover {
+  border-color: #9ca3af;
+  background: #f3f4f6;
+  transform: translateY(-1px);
+}
+
+.skill-chip.selected {
+  background: #dbeafe;
+  border-color: #2563eb;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.skill-chip.selected .skill-plus {
+  color: #1e40af;
+}
+
+/* Form Actions */
+.create-opportunity-form .form-actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.create-opportunity-form .btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.create-opportunity-form .btn-primary {
+  background: #2563eb;
+  color: white;
+  flex: 1;
+}
+
+.create-opportunity-form .btn-primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.create-opportunity-form .btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  min-width: 140px;
+}
+
+.create-opportunity-form .btn-secondary:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+/* Success Toast Notification */
+.success-toast {
+  position: fixed;
+  top: 80px;
+  right: 24px;
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast-content {
+  background: #10b981;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  min-width: 280px;
+}
+
+.toast-content svg {
+  flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .create-opportunity-card {
+    padding: 28px 20px;
+  }
+
+  .create-opportunity-form {
+    gap: 24px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px;
+  }
+
+  .skill-chip {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .create-opportunity-form .form-actions {
+    flex-direction: column;
+  }
+
+  .create-opportunity-form .btn-primary,
+  .create-opportunity-form .btn-secondary {
+    width: 100%;
+  }
+
+  .success-toast {
+    right: 16px;
+    left: 16px;
+  }
+
+  .toast-content {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .create-opportunity-card {
+    padding: 24px 16px;
+  }
+
+  .dashboard-welcome h1 {
+    font-size: 24px;
+  }
+
+  .dashboard-welcome p {
+    font-size: 14px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .create-opportunity-form input,
+  .create-opportunity-form textarea,
+  .create-opportunity-form select {
+    font-size: 14px;
+  }
+}

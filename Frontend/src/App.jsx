@@ -9,6 +9,8 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import VolunteerDashboard from "./pages/VolunteerDashboard";
 import NGODashboard from "./pages/NGODashboard";
+import NGOOpportunities from "./pages/NGOOpportunities";
+import CreateOpportunity from "./pages/CreateOpportunity";
 import EditProfile from "./pages/EditProfile";
 import EditNGOProfile from "./pages/EditNGOProfile";
 
@@ -52,6 +54,7 @@ export default function App() {
         {/* Dashboard routes (no separate Navbar as it has its own header) */}
         <Route path="/volunteer-dashboard" element={<VolunteerDashboard />} />
         <Route path="/ngo-dashboard" element={<NGODashboard />} />
+        <Route path="/ngo-opportunities" element={<NGOOpportunities />} />
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/edit-ngo-profile" element={<EditNGOProfile />} />
 
